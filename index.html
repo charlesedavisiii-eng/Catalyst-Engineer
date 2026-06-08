@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalyst Engineer • Premium Workwear for the Trades and the Lake</title>
+  <meta name="description" content="Engineered workwear for the men and women who build, repair, and power the world — whether on the job or on the lake. Durable, premium apparel for construction, welding, HVAC, heavy industry, and the outdoors.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+
+    :root {
+      --ce-yellow: #FFD700;
+    }
+
+    body {
+      font-family: 'Inter', system_ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .heading-industrial {
+      font-family: 'Space Grotesk', 'Inter', system_ui, -apple-system, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .section-heading {
+      color: #FFD700;
+      text-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.25),
+        0 2px 8px rgba(255, 255, 255, 0.15),
+        0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .premium-card {
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .premium-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 215, 0, 0.2);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -2px;
+      left: 0;
+      background-color: #FFD700;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover:after {
+      width: 100%;
+    }
+
+    .cinematic-hero {
+      background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), 
+                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=2000&q=90');
+      background-size: cover;
+      background-position: center 30%;
+      background-attachment: fixed;
+    }
+
+    .product-img {
+      transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    .premium-card:hover .product-img {
+      transform: scale(1.06);
+    }
+
+    .workwear-grid {
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    .stat-number {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+    }
+
+    .tradesman-img {
+      filter: contrast(1.05) saturate(0.95);
+    }
+
+    .filter-btn {
+      transition: all 0.2s ease;
+    }
+    
+    .filter-btn.active {
+      background-color: #FFD700;
+      color: #000000;
+      border-color: #FFD700;
+    }
+
+    .cart-drawer {
+      transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    .toast {
+      animation: slideUpToast 0.3s ease forwards;
+    }
+
+    @keyframes slideUpToast {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .industrial-text {
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+  </style>
+</head>
+<body class="bg-[#000000] text-white overflow-x-hidden">
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-[#000000]/95 backdrop-blur-lg border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <div class="flex items-center gap-x-3">
+          <div class="flex items-center justify-center w-9 h-9">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.5 3L4.5 14H11L9.5 21L19.5 10H13L13.5 3Z" fill="#FFD700" stroke="#FFD700" stroke-width="0.8" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <span class="font-bold text-2xl tracking-[-1.5px] heading-industrial">CATALYST</span>
+            <span class="font-medium text-sm tracking-[3px] text-white/60 block -mt-1.5">ENGINEER</span>
+          </div>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-x-10 text-sm font-medium">
+          <a href="#collections" class="nav-link text-white/80 hover:text-white">Shop</a>
+          <a href="#story" class="nav-link text-white/80 hover:text-white">The Standard</a>
+          <a href="#endure" class="nav-link text-white/80 hover:text-white">Built For</a>
+          <a href="#trades" class="nav-link text-white/80 hover:text-white">The Trades</a>
+        </div>
+
+        <!-- Right side -->
+        <div class="flex items-center gap-x-4">
+          <!-- Cart -->
+          <button onclick="openCart()" 
+                  class="flex items-center gap-x-2 px-4 py-2 rounded-full border border-white/20 hover:border-white/40 transition-colors relative group">
+            <i class="fa-solid fa-shopping-bag text-lg"></i>
+            <span class="hidden sm:inline text-sm font-medium">Cart</span>
+            <div id="cart-count" 
+                 class="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1.5 rounded-full bg-[#FFD700] text-[#000000] text-[10px] font-bold flex items-center justify-center">
+              0
+            </div>
+          </button>
+
+          <!-- Mobile Menu -->
+          <button onclick="toggleMobileMenu()" 
+                  class="md:hidden w-10 h-10 flex items-center justify-center text-xl border border-white/20 rounded-full">
+            <i class="fa-solid fa-bars" id="mobile-menu-icon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-[#000000]">
+      <div class="px-6 py-8 flex flex-col gap-y-6 text-lg font-medium">
+        <a href="#collections" onclick="toggleMobileMenu()" class="hover:text-[#FFD700]">Shop</a>
+        <a href="#story" onclick="toggleMobileMenu()" class="hover:text-[#FFD700]">The Standard</a>
+        <a href="#endure" onclick="toggleMobileMenu()" class="hover:text-[#FFD700]">Built For</a>
+        <a href="#trades" onclick="toggleMobileMenu()" class="hover:text-[#FFD700]">The Trades</a>
+        <div class="pt-4 border-t border-white/10">
+          <button onclick="toggleMobileMenu(); document.getElementById('collections').scrollIntoView({behavior:'smooth'})" 
+                  class="w-full py-3.5 bg-[#FFD700] text-black font-semibold rounded-xl tracking-wider text-sm">
+            SHOP THE COLLECTION
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="cinematic-hero h-[100dvh] min-h-[620px] flex items-center relative">
+    <div class="max-w-5xl mx-auto px-6 pt-12 pb-20 text-center">
+      <!-- Logo Mark -->
+      <div class="flex justify-center mb-6">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-black/30 backdrop-blur border border-white/20">
+          <svg width="54" height="54" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.5 3L4.5 14H11L9.5 21L19.5 10H13L13.5 3Z" fill="#FFD700"/>
+            <path d="M13.5 3L4.5 14H11L9.5 21L19.5 10H13L13.5 3Z" stroke="white" stroke-opacity="0.35" stroke-width="1.25"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="heading-industrial text-[72px] md:text-[92px] lg:text-[104px] leading-[0.88] font-bold tracking-[-5.2px] mb-2">
+        <span class="section-heading">Catalyst</span><br>
+        <span class="section-heading">Engineer</span>
+      </h1>
+
+      <!-- Tagline -->
+      <p class="text-2xl md:text-3xl text-white/90 font-light tracking-[-0.3px] mt-2 mb-9">
+        Build On Purpose
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button onclick="document.getElementById('collections').scrollIntoView({ behavior: 'smooth' })" 
+                class="group w-full sm:w-auto inline-flex items-center justify-center gap-x-3 bg-[#FFD700] hover:bg-[#E6C200] active:bg-[#D4AF00] transition-all text-black font-semibold text-base tracking-[0.5px] px-10 py-[17px] rounded-2xl">
+          SHOP THE COLLECTION
+          <i class="fa-solid fa-arrow-right group-active:translate-x-0.5 transition"></i>
+        </button>
+        
+        <button onclick="document.getElementById('story').scrollIntoView({ behavior: 'smooth' })" 
+                class="group w-full sm:w-auto inline-flex items-center justify-center gap-x-3 border border-white/30 hover:border-white/60 text-white font-medium text-base tracking-[0.5px] px-9 py-[17px] rounded-2xl transition-all">
+          OUR STANDARD
+        </button>
+      </div>
+
+      <div class="mt-14 flex items-center justify-center gap-x-8 text-xs uppercase tracking-[2.5px] text-white/40">
+        <div>EST 2026</div>
+        <div class="w-px h-3 bg-white/30"></div>
+        <div>BUILT ON THE JOB SITE</div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-y-1 text-white/40 text-xs tracking-widest">
+      <div>SCROLL TO EXPLORE</div>
+      <i class="fa-solid fa-chevron-down text-sm"></i>
+    </div>
+  </header>
+
+  <!-- THE CATALYST STANDARD -->
+  <section id="story" class="max-w-7xl mx-auto px-6 pt-20 pb-16">
+    <div class="grid md:grid-cols-12 gap-x-12 gap-y-12 items-center">
+      <!-- Left: Text -->
+      <div class="md:col-span-7">
+        <div class="uppercase tracking-[3.5px] text-xs text-[#FFD700]/80 font-medium mb-3">THE CATALYST STANDARD</div>
+        
+        <h2 class="heading-industrial text-5xl md:text-6xl leading-[1.05] tracking-[-2.2px] font-bold mb-8">
+          Born on the job site.<br>Built for the long haul.
+        </h2>
+
+        <div class="max-w-[42ch] space-y-6 text-[15px] text-white/80 leading-relaxed">
+          <p>
+            Catalyst Engineer exists for the people who show up before sunrise and leave after dark — whether on the job or on the lake. 
+            We design workwear that earns its place in your truck or on your boat — season after season.
+          </p>
+          <p>
+            Every stitch, every fabric, every detail is tested by the men and women who build this country and chase the seasons. 
+            No shortcuts. No compromises. Just gear that works as hard as you do.
+          </p>
+        </div>
+
+        <div class="mt-9 flex items-center gap-x-4">
+          <div class="h-px w-8 bg-white/30"></div>
+          <span class="uppercase tracking-[2px] text-xs text-white/60">Trade-born • Lake-tested • Built to last</span>
+        </div>
+      </div>
+
+      <!-- Right: Hero image -->
+      <div class="md:col-span-5">
+        <div class="relative rounded-3xl overflow-hidden border border-white/10 aspect-[4/3] md:aspect-auto md:h-[460px]">
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=80" 
+               alt="Men on a fishing boat wearing durable workwear, whether on the job or on the lake"
+               class="absolute inset-0 w-full h-full object-cover tradesman-img">
+          <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/70"></div>
+          <div class="absolute bottom-0 left-0 p-7">
+            <div class="text-[#FFD700] text-sm tracking-widest font-medium">PROVEN EVERYWHERE</div>
+            <div class="text-white text-xl font-semibold tracking-tight">On the job. On the lake.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-7xl mx-auto"></div>
+
+  <!-- SIGNATURE SERIES / PRODUCTS -->
+  <section id="collections" class="max-w-7xl mx-auto px-6 pt-16 pb-20">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-y-4 mb-8">
+      <div>
+        <div class="uppercase tracking-[3.5px] text-xs text-[#FFD700]/80 font-medium mb-2">TRUE LINE SERIES</div>
+        <h2 class="heading-industrial text-6xl tracking-[-2.4px] font-bold">True Line Series</h2>
+      </div>
+      <p class="max-w-md text-white/70 text-[15px]">
+        Maintain critical path with the True Line Basics Series. Built from heavyweight fabrics that look good on or off the clock.
+      </p>
+    </div>
+
+    <!-- Products Grid -->
+    <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 max-w-[1200px] mx-auto">
+      <!-- Populated by JavaScript -->
+    </div>
+  </section>
+
+  <!-- BUILT FOR -->
+  <section id="endure" class="bg-[#050505] py-16 border-y border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <div class="uppercase tracking-[3.5px] text-xs text-[#FFD700]/80 font-medium mb-3">THE STANDARD</div>
+        <h2 class="heading-industrial text-5xl md:text-6xl tracking-[-2.2px] font-bold">Built For</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Card 1: Heavyweight materials and reinforced construction -->
+        <div class="group border border-white/10 rounded-3xl p-7 bg-[#000000] hover:border-white/25 transition">
+          <div class="w-11 h-11 rounded-2xl bg-white/5 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-shield-halved text-[#FFD700] text-2xl"></i>
+          </div>
+          <h3 class="font-semibold text-xl mb-2.5">Heavyweight Build</h3>
+          <p class="text-white/70 text-[14.5px] leading-snug">Built with heavyweight materials and reinforced construction, these pieces are made to handle real work and daily wear without breaking down. Designed for people who value quality and expect their gear to last.</p>
+        </div>
+
+        <!-- Card 2: Crafted for durability and built with intention -->
+        <div class="group border border-white/10 rounded-3xl p-7 bg-[#000000] hover:border-white/25 transition">
+          <div class="w-11 h-11 rounded-2xl bg-white/5 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-arrows-rotate text-[#FFD700] text-2xl"></i>
+          </div>
+          <h3 class="font-semibold text-xl mb-2.5">Built with Intention</h3>
+          <p class="text-white/70 text-[14.5px] leading-snug">Crafted for durability and built with intention. Whether you’re on the job or off the clock, these pieces deliver the toughness you need with the comfort you want to actually live in.</p>
+        </div>
+
+        <!-- Card 3: Pride in work and the things they wear -->
+        <div class="group border border-white/10 rounded-3xl p-7 bg-[#000000] hover:border-white/25 transition">
+          <div class="w-11 h-11 rounded-2xl bg-white/5 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-award text-[#FFD700] text-2xl"></i>
+          </div>
+          <h3 class="font-semibold text-xl mb-2.5">Pride in Craft</h3>
+          <p class="text-white/70 text-[14.5px] leading-snug">Made for those who take pride in their work and the things they wear. Each piece is built with quality materials that hold up over time while staying comfortable through long days.</p>
+        </div>
+
+        <!-- Card 4: Tough for job site, comfortable for everyday -->
+        <div class="group border border-white/10 rounded-3xl p-7 bg-[#000000] hover:border-white/25 transition">
+          <div class="w-11 h-11 rounded-2xl bg-white/5 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-helmet-safety text-[#FFD700] text-2xl"></i>
+          </div>
+          <h3 class="font-semibold text-xl mb-2.5">Real Work. Real Life.</h3>
+          <p class="text-white/70 text-[14.5px] leading-snug">Tough enough for the job site, comfortable enough for everyday wear. These pieces are designed with durability and quality at the core — made to last through real work and real life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUSTED BY THE TRADES -->
+  <section id="trades" class="max-w-7xl mx-auto px-6 pt-20 pb-20">
+    <div class="mb-10">
+      <div class="uppercase tracking-[3.5px] text-xs text-[#FFD700]/80 font-medium mb-3">REAL WORKERS. REAL FEEDBACK.</div>
+      <h2 class="heading-industrial text-5xl tracking-[-2px] font-bold">Trusted by the Trades</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Testimonial 1 -->
+      <div class="border border-white/10 rounded-3xl p-7 bg-[#050505]">
+        <div class="flex gap-x-4 mb-6">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" 
+               alt="Mike R., Ironworker and angler" 
+               class="w-12 h-12 rounded-full object-cover ring-1 ring-white/10">
+          <div>
+            <div class="font-semibold">Mike R.</div>
+            <div class="text-xs text-white/60">Ironworker • Local 86 • 14 years</div>
+          </div>
+        </div>
+        <p class="text-[15px] text-white/80 leading-relaxed">"The On-Site Shirt is the only one that’s made it through three winters on the high-rises. The construction is legit. Everything else I’ve owned fell apart at the seams."</p>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="border border-white/10 rounded-3xl p-7 bg-[#050505]">
+        <div class="flex gap-x-4 mb-6">
+          <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=200&q=80" 
+               alt="Carlos M., Pipefitter" 
+               class="w-12 h-12 rounded-full object-cover ring-1 ring-white/10">
+          <div>
+            <div class="font-semibold">Carlos M.</div>
+            <div class="text-xs text-white/60">Pipefitter • 9 years</div>
+          </div>
+        </div>
+        <p class="text-[15px] text-white/80 leading-relaxed">"The Titan pants are the first pair that survived a full year of welding without blowing out the knees. I bought three more pairs the next week."</p>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="border border-white/10 rounded-3xl p-7 bg-[#050505]">
+        <div class="flex gap-x-4 mb-6">
+          <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=200&q=80" 
+               alt="Derek T., HVAC Lead" 
+               class="w-12 h-12 rounded-full object-cover ring-1 ring-white/10">
+          <div>
+            <div class="font-semibold">Derek T.</div>
+            <div class="text-xs text-white/60">HVAC Lead • 11 years</div>
+          </div>
+        </div>
+        <p class="text-[15px] text-white/80 leading-relaxed">"I’ve tried the expensive brands. Catalyst is the only one that actually feels like it was made by someone who’s been in the attic in August. The On-Site Hoodie breathes but still blocks the wind on the roof."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="border-y border-white/10 bg-[#050505]">
+    <div class="max-w-4xl mx-auto px-6 py-20 text-center">
+      <div class="inline-block mb-4 px-4 py-1 text-xs tracking-[3px] border border-white/20 rounded-full text-white/60">GEAR UP FOR THE JOB</div>
+      
+      <h2 class="heading-industrial text-6xl tracking-[-2.6px] font-bold mb-4">Work hard.<br>Look the part.</h2>
+      <p class="text-xl text-white/70 mb-9 max-w-md mx-auto">Premium workwear that respects the trades — whether on the job or on the lake.</p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button onclick="document.getElementById('collections').scrollIntoView({ behavior: 'smooth' })" 
+                class="px-11 py-4 bg-[#FFD700] hover:bg-[#E6C200] active:bg-[#D4AF00] transition-colors text-black font-semibold rounded-2xl tracking-wider text-sm">
+          SHOP SIGNATURE SERIES
+        </button>
+        <button onclick="window.location.reload()" 
+                class="px-10 py-4 border border-white/30 hover:bg-white/5 transition-colors text-white font-medium rounded-2xl tracking-wider text-sm">
+          LEARN THE STORY
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="max-w-7xl mx-auto px-6 pt-14 pb-10 text-sm">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-y-6 text-white/50">
+      <div class="flex flex-col md:flex-row md:items-center gap-x-6 gap-y-1.5">
+        <div class="flex items-center gap-x-2.5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.5 3L4.5 14H11L9.5 21L19.5 10H13L13.5 3Z" fill="#FFD700"/>
+          </svg>
+          <span class="font-semibold text-white tracking-tight">Catalyst Engineer</span>
+        </div>
+        <div class="hidden md:block text-white/30">•</div>
+        <div>© 2026 Catalyst Engineer Co.</div>
+      </div>
+
+      <div class="flex flex-wrap gap-x-7 gap-y-2 text-xs tracking-wider font-medium">
+        <a href="#" class="hover:text-white transition">Shipping</a>
+        <a href="#" class="hover:text-white transition">Returns</a>
+        <a href="#" class="hover:text-white transition">Care Guide</a>
+        <a href="#" class="hover:text-white transition">Trade Program</a>
+        <a href="#" class="hover:text-white transition">Contact</a>
+      </div>
+    </div>
+    <div class="mt-8 text-[11px] text-white/40 tracking-wider">
+      Premium workwear for the trades and time on the lake. Designed in the United States.
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div id="cart-drawer" onclick="if (event.target.id === 'cart-drawer') closeCart()" 
+       class="hidden fixed inset-0 z-[60] bg-black/70">
+    <div onclick="event.stopImmediatePropagation()" 
+         class="cart-drawer fixed right-0 top-0 h-full w-full max-w-md bg-[#000000] border-l border-white/10 shadow-2xl flex flex-col">
+      
+      <!-- Cart Header -->
+      <div class="px-6 py-5 border-b border-white/10 flex items-center justify-between">
+        <div class="font-semibold text-xl tracking-tight">Your Cart</div>
+        <button onclick="closeCart()" class="text-2xl leading-none text-white/60 hover:text-white">&times;</button>
+      </div>
+
+      <!-- Cart Items -->
+      <div id="cart-items" class="flex-1 overflow-y-auto px-6 py-6 space-y-6 text-sm">
+        <!-- Populated dynamically -->
+      </div>
+
+      <!-- Cart Footer -->
+      <div class="border-t border-white/10 p-6 bg-[#000000]">
+        <div class="flex justify-between items-baseline mb-6 px-1">
+          <div class="text-white/60">Total</div>
+          <div id="cart-total" class="font-semibold text-3xl tracking-tighter">$0</div>
+        </div>
+
+        <button onclick="checkout()" 
+                class="w-full py-[17px] bg-[#FFD700] text-black font-semibold rounded-2xl text-sm tracking-[1px] active:scale-[0.985] transition">
+          CHECKOUT
+        </button>
+        
+        <div class="text-center mt-4 text-[11px] text-white/50 tracking-wider">Ships in 1–2 business days • Free over $150</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-[70] flex flex-col gap-2"></div>
+
+  <script>
+    // Tailwind Configuration
+    function initializeTailwind() {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'ce-yellow': '#FFD700'
+            }
+          }
+        }
+      }
+    }
+
+    // Product Data - True Line Series (durable, comfortable workwear with hover variants)
+    const products = [
+      {
+        id: 1,
+        name: "The On-Site Shirt",
+        price: 68,
+        category: "Tops",
+        image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd85da?w=900&q=80",
+        imageHover: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80",
+        desc: "Rugged breathable cotton with reinforced seams for lasting durability. Designed for all-day comfort and unrestricted movement on the toughest jobs."
+      },
+      {
+        id: 2,
+        name: "The On-Site Hoodie",
+        price: 78,
+        category: "Tops",
+        image: "https://images.unsplash.com/photo-1540479859555-17af45c78602?w=900&q=80",
+        imageHover: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=900&q=80",
+        desc: "Heavyweight fleece built for superior comfort and durability. Reinforced at high-wear areas with a soft, broken-in feel that holds up season after season."
+      },
+      {
+        id: 3,
+        name: "Catalyst Engineer Signature Cap",
+        price: 36,
+        category: "Accessories",
+        image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=900&q=80",
+        imageHover: "https://images.unsplash.com/photo-1514327605112-b887c0e61c0a?w=900&q=80",
+        desc: "Classic trucker construction with breathable mesh back, structured fit, and our signature embroidered logo. Adjustable for all-day comfort and built to last."
+      }
+    ]
+
+    let cart = []
+
+    // Render True Line Series products
+    function renderProducts(filteredProducts) {
+      const grid = document.getElementById('products-grid')
+      grid.innerHTML = ''
+
+      const toRender = filteredProducts || products
+
+      toRender.forEach(product => {
+        const card = document.createElement('div')
+        card.className = `premium-card group bg-[#050505] border border-white/10 rounded-3xl overflow-hidden flex flex-col`
+        
+        card.innerHTML = `
+          <div class="relative overflow-hidden bg-black aspect-[4/3] md:aspect-[16/10] lg:aspect-[3/2]">
+            <img src="${product.image}" 
+                 data-hover-src="${product.imageHover}"
+                 alt="${product.name} - premium durable workwear"
+                 class="product-img w-full h-full object-cover transition-all duration-500"
+                 onmouseover="this.src = this.getAttribute('data-hover-src')"
+                 onmouseout="this.src = '${product.image}'">
+          </div>
+          
+          <div class="p-6 lg:p-8 flex flex-col flex-1">
+            <div class="flex-1">
+              <div class="flex justify-between items-start gap-3">
+                <h3 class="font-semibold text-[19px] lg:text-xl leading-tight tracking-[-0.2px] pr-1">${product.name}</h3>
+                <div class="font-semibold text-[#FFD700] whitespace-nowrap text-xl tracking-tighter">$${product.price}</div>
+              </div>
+              <p class="text-white/70 text-[14px] mt-3 leading-snug">${product.desc}</p>
+            </div>
+            
+            <button onclick="addToCart(${product.id}, this)"
+                    class="mt-6 w-full py-4 border border-[#FFD700]/60 hover:bg-[#FFD700] hover:text-black hover:border-[#FFD700] text-[#FFD700] text-xs font-semibold tracking-[1.5px] rounded-2xl transition-all active:scale-[0.985]">
+              ADD TO CART
+            </button>
+          </div>
+        `
+        grid.appendChild(card)
+      })
+    }
+
+    // Add to cart
+    function addToCart(productId, buttonElement) {
+      const product = products.find(p => p.id === productId)
+      if (!product) return
+
+      // Add to cart
+      const existing = cart.find(item => item.id === productId)
+      if (existing) {
+        existing.quantity = (existing.quantity || 1) + 1
+      } else {
+        cart.push({ ...product, quantity: 1 })
+      }
+
+      // Update UI
+      updateCartCount()
+
+      // Visual feedback on button
+      const originalText = buttonElement.innerHTML
+      buttonElement.innerHTML = 'ADDED ✓'
+      buttonElement.style.borderColor = '#FFD700'
+      buttonElement.style.backgroundColor = '#FFD700'
+      buttonElement.style.color = '#000000'
+
+      // Toast notification
+      showToast(`${product.name} added to cart`)
+
+      // Reset button after delay
+      setTimeout(() => {
+        if (buttonElement) {
+          buttonElement.innerHTML = originalText
+          buttonElement.style.borderColor = ''
+          buttonElement.style.backgroundColor = ''
+          buttonElement.style.color = ''
+        }
+      }, 1400)
+    }
+
+    function updateCartCount() {
+      const countEl = document.getElementById('cart-count')
+      const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0)
+      countEl.textContent = totalItems
+    }
+
+    // Open cart drawer
+    function openCart() {
+      const drawer = document.getElementById('cart-drawer')
+      const itemsContainer = document.getElementById('cart-items')
+      
+      drawer.classList.remove('hidden')
+      drawer.classList.add('flex')
+
+      renderCartItems(itemsContainer)
+    }
+
+    function closeCart() {
+      const drawer = document.getElementById('cart-drawer')
+      drawer.classList.remove('flex')
+      drawer.classList.add('hidden')
+    }
+
+    function renderCartItems(container) {
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="h-full flex flex-col items-center justify-center text-center py-10">
+            <i class="fa-solid fa-shopping-bag text-4xl text-white/20 mb-5"></i>
+            <div class="font-medium">Your cart is empty</div>
+            <p class="text-sm text-white/60 mt-1.5 max-w-[200px]">Premium gear for the trades is waiting.</p>
+            <button onclick="closeCart(); document.getElementById('collections').scrollIntoView({behavior:'smooth'})" 
+                    class="mt-6 text-sm px-6 py-2.5 border border-white/30 hover:border-white/60 rounded-full text-xs tracking-widest">
+              BROWSE COLLECTION
+            </button>
+          </div>
+        `
+        document.getElementById('cart-total').textContent = '$0'
+        return
+      }
+
+      container.innerHTML = ''
+      let total = 0
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * (item.quantity || 1)
+        total += itemTotal
+
+        const itemEl = document.createElement('div')
+        itemEl.className = 'flex gap-4'
+        itemEl.innerHTML = `
+          <div class="w-16 h-16 flex-shrink-0 rounded-2xl overflow-hidden border border-white/10">
+            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-1 min-w-0 pt-0.5">
+            <div class="flex justify-between gap-2">
+              <div class="font-medium text-[14.5px] leading-tight pr-4">${item.name}</div>
+              <div class="text-[#FFD700] font-semibold whitespace-nowrap">$${itemTotal}</div>
+            </div>
+            
+            <div class="flex items-center justify-between mt-3">
+              <div class="flex items-center border border-white/15 rounded-lg overflow-hidden">
+                <button onclick="changeCartQuantity(${index}, -1)" class="w-7 h-7 flex items-center justify-center hover:bg-white/5 text-lg leading-none">−</button>
+                <div class="px-2.5 text-sm font-medium tabular-nums">${item.quantity || 1}</div>
+                <button onclick="changeCartQuantity(${index}, 1)" class="w-7 h-7 flex items-center justify-center hover:bg-white/5 text-lg leading-none">+</button>
+              </div>
+              
+              <button onclick="removeFromCart(${index})" 
+                      class="text-xs text-white/50 hover:text-red-400 transition px-2 py-1">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        `
+        container.appendChild(itemEl)
+      })
+
+      document.getElementById('cart-total').textContent = `$${total}`
+    }
+
+    function changeCartQuantity(index, delta) {
+      const item = cart[index]
+      item.quantity = (item.quantity || 1) + delta
+
+      if (item.quantity < 1) item.quantity = 1
+
+      const container = document.getElementById('cart-items')
+      renderCartItems(container)
+      updateCartCount()
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1)
+      const container = document.getElementById('cart-items')
+      renderCartItems(container)
+      updateCartCount()
+    }
+
+    function checkout() {
+      const total = cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0)
+      
+      if (cart.length === 0) return
+
+      const drawerContent = document.querySelector('#cart-drawer > div')
+      
+      drawerContent.innerHTML = `
+        <div class="flex flex-col items-center justify-center h-full text-center px-8">
+          <div class="w-14 h-14 rounded-full bg-[#FFD700]/10 flex items-center justify-center mb-6">
+            <i class="fa-solid fa-check text-[#FFD700] text-3xl"></i>
+          </div>
+          <div class="text-2xl font-semibold tracking-tight mb-1">Thank you.</div>
+          <p class="text-white/70">This is a demo storefront.</p>
+          
+          <div class="my-8 text-sm bg-white/5 border border-white/10 p-5 rounded-2xl text-left w-full max-w-xs">
+            <div class="font-medium mb-1">Order Summary</div>
+            <div class="flex justify-between text-white/60 text-xs">
+              <div>Items</div>
+              <div>${cart.length}</div>
+            </div>
+            <div class="flex justify-between mt-1 text-lg font-semibold text-white">
+              <div>Total</div>
+              <div class="text-[#FFD700]">$${total}</div>
+            </div>
+          </div>
+
+          <button onclick="completeCheckout()" 
+                  class="w-full max-w-xs py-3.5 rounded-2xl bg-white text-black font-semibold text-sm tracking-wider">
+            RETURN TO STORE
+          </button>
+        </div>
+      `
+    }
+
+    function completeCheckout() {
+      cart = []
+      updateCartCount()
+      closeCart()
+      showToast("Demo complete. Cart cleared.", true)
+    }
+
+    // Toast helper
+    function showToast(message, isNeutral = false) {
+      const container = document.getElementById('toast-container')
+      
+      const toast = document.createElement('div')
+      toast.className = `toast flex items-center gap-x-3 px-5 py-3.5 rounded-2xl shadow-xl text-sm border ${isNeutral ? 'bg-[#111] border-white/10' : 'bg-[#0a0a0a] border-[#FFD700]/30'}`
+      toast.innerHTML = `
+        <div class="flex items-center gap-x-3">
+          ${!isNeutral ? `<i class="fa-solid fa-check text-[#FFD700]"></i>` : ''}
+          <span>${message}</span>
+        </div>
+      `
+      
+      container.appendChild(toast)
+      
+      setTimeout(() => {
+        toast.style.transition = 'all 0.2s ease'
+        toast.style.opacity = '0'
+        setTimeout(() => toast.remove(), 180)
+      }, 2600)
+    }
+
+    // Mobile menu
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu')
+      const icon = document.getElementById('mobile-menu-icon')
+      
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden')
+        icon.classList.remove('fa-bars')
+        icon.classList.add('fa-times')
+      } else {
+        menu.classList.add('hidden')
+        icon.classList.remove('fa-times')
+        icon.classList.add('fa-bars')
+      }
+    }
+
+    // Keyboard escape for cart
+    function initKeyboardControls() {
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          const drawer = document.getElementById('cart-drawer')
+          if (!drawer.classList.contains('hidden')) {
+            closeCart()
+          } else {
+            const mobile = document.getElementById('mobile-menu')
+            if (!mobile.classList.contains('hidden')) {
+              mobile.classList.add('hidden')
+              document.getElementById('mobile-menu-icon').classList.remove('fa-times')
+              document.getElementById('mobile-menu-icon').classList.add('fa-bars')
+            }
+          }
+        }
+      })
+    }
+
+    // Main initialization
+    function initializeWebsite() {
+      initializeTailwind()
+      
+      // Render the two large featured products
+      renderProducts(products)
+      
+      // Preload hover images for instant swap
+      products.forEach(p => {
+        if (p.imageHover) {
+          const img = new Image()
+          img.src = p.imageHover
+        }
+      })
+      
+      // Initial cart count
+      updateCartCount()
+      
+      // Keyboard support
+      initKeyboardControls()
+
+      // Easter egg: Clicking the logo scrolls to top
+      const logo = document.querySelector('nav .flex.items-center')
+      if (logo) {
+        logo.style.cursor = 'pointer'
+        logo.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        })
+      }
+
+      // Mark site ready
+      console.log('%c[Catalyst Engineer] Premium cinematic site initialized.', 'color:#555')
+    }
+
+    // Boot the site
+    window.onload = initializeWebsite
+  </script>
+</body>
+</html>
